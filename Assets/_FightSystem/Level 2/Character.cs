@@ -11,6 +11,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// Stat de base, HP
         /// </summary>
         int _baseHealth;
+        int _maxHealth;
         /// <summary>
         /// Stat de base, ATK
         /// </summary>
@@ -31,6 +32,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         public Character(int baseHealth, int baseAttack, int baseDefense, int baseSpeed, TYPE baseType)
         {
             _baseHealth = baseHealth;
+            _maxHealth = baseHealth;
             _baseAttack = baseAttack;
             _baseDefense = baseDefense;
             _baseSpeed = baseSpeed;
@@ -41,8 +43,8 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// </summary>
         public int CurrentHealth 
         { 
-            get => _baseHealth = 100; 
-            private set {CurrentHealth = _baseHealth; }
+            get => _baseHealth; 
+            private set {CurrentHealth = value;}
         }
         public TYPE BaseType { get => _baseType;}
         /// <summary>
@@ -50,10 +52,13 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// </summary>
         public int MaxHealth
         {
-            get => _baseHealth;
+            get
+            {
+                return _maxHealth;
+            }
 
-            set {
-                MaxHealth = _baseHealth += CurrentEquipment.BonusHealth;
+            set { 
+                _maxHealth = value;
             }
         }
         /// <summary>
@@ -65,6 +70,10 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
             {
                 return _baseAttack;
             }
+
+            private set {
+                _baseAttack = value;
+            }
         }
         /// <summary>
         /// DEF, prendre en compte base et equipement potentiel
@@ -74,6 +83,10 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
             get
             {
                 return _baseDefense;
+            }
+
+            private set {
+                _baseDefense = value;
             }
         }
         /// <summary>
@@ -85,18 +98,22 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
             {
                 return _baseSpeed;
             }
+
+            private set {
+                _baseSpeed = value;
+            }
         }
         /// <summary>
         /// Equipement unique du personnage
+        /// set stats for equipment
         /// </summary>
-        public Equipment CurrentEquipment { get; private set; }
+        public Equipment CurrentEquipment { get; private set;}
         /// <summary>
         /// null si pas de status
         /// </summary>
-        public StatusEffect CurrentStatus { get; private set; }
+        public StatusEffect CurrentStatus { get; private set;}
 
-        public bool IsAlive; //=> throw new NotImplementedException();
-
+        public bool IsAlive => CurrentHealth > 0;
 
         /// <summary>
         /// Application d'un skill contre le personnage
@@ -116,14 +133,26 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// <exception cref="ArgumentNullException">Si equipement est null</exception>
         public void Equip(Equipment newEquipment)
         {
-            //throw new NotImplementedException();
+            if (newEquipment == null)
+            {
+                throw new ArgumentNullException(nameof(newEquipment));
+            }
+            MaxHealth += newEquipment.BonusHealth;
+            Attack += newEquipment.BonusAttack;
+            Defense += newEquipment.BonusDefense;
+            Speed += newEquipment.BonusSpeed;
+            CurrentEquipment = newEquipment;
         }
         /// <summary>
         /// Desequipe l'objet en cours au personnage
         /// </summary>
         public void Unequip()
         {
-            //throw new NotImplementedException();
+            MaxHealth -= CurrentEquipment.BonusHealth;
+            Attack -= CurrentEquipment.BonusAttack;
+            Defense -= CurrentEquipment.BonusDefense;
+            Speed -= CurrentEquipment.BonusSpeed;
+            CurrentEquipment = null;
         }
 
     }
