@@ -1,5 +1,6 @@
 ﻿
 using System;
+using UnityEngine.TextCore.Text;
 
 namespace _2023_GC_A2_Partiel_POO.Level_2
 {
@@ -27,6 +28,16 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         public void ExecuteTurn(Skill skillFromCharacter1, Skill skillFromCharacter2)
         {
             throw new NotImplementedException();
+            if (Character1.Speed< Character2.Speed)
+            {
+                Character1.Attack(Character2, skillFromCharacter1);
+                Character2.Attack(Character1, skillFromCharacter2);
+            }
+            else
+            {
+                Character2.Attack(Character1, skillFromCharacter2);
+                Character1.Attack(Character2, skillFromCharacter1);
+            
         }
 
     }
