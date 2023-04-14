@@ -124,6 +124,11 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// <exception cref="NotImplementedException"></exception>
         public void ReceiveAttack(Skill s)
         {
+            _baseHealth -= s.Power - Defense;
+            if (_baseHealth < 0)
+            {
+                _baseHealth = 0;
+            }
             //throw new NotImplementedException();
         }
         /// <summary>
