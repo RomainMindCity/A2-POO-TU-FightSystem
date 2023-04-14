@@ -39,16 +39,21 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// <summary>
         /// HP actuel du personnage
         /// </summary>
-        public int CurrentHealth { get; private set; }
+        public int CurrentHealth 
+        { 
+            get => _baseHealth = 100; 
+            private set {CurrentHealth = _baseHealth; }
+        }
         public TYPE BaseType { get => _baseType;}
         /// <summary>
         /// HPMax, prendre en compte base et equipement potentiel
         /// </summary>
         public int MaxHealth
         {
-            get
-            {
-                throw new NotImplementedException();
+            get => _baseHealth;
+
+            set {
+                MaxHealth = _baseHealth += CurrentEquipment.BonusHealth;
             }
         }
         /// <summary>
@@ -58,7 +63,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         {
             get
             {
-                throw new NotImplementedException();
+                return _baseAttack;
             }
         }
         /// <summary>
@@ -68,7 +73,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         {
             get
             {
-                throw new NotImplementedException();
+                return _baseDefense;
             }
         }
         /// <summary>
@@ -78,7 +83,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         {
             get
             {
-                throw new NotImplementedException();
+                return _baseSpeed;
             }
         }
         /// <summary>
@@ -90,7 +95,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// </summary>
         public StatusEffect CurrentStatus { get; private set; }
 
-        public bool IsAlive => throw new NotImplementedException();
+        public bool IsAlive; //=> throw new NotImplementedException();
 
 
         /// <summary>
@@ -102,7 +107,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// <exception cref="NotImplementedException"></exception>
         public void ReceiveAttack(Skill s)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
         /// <summary>
         /// Equipe un objet au personnage
@@ -111,14 +116,14 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// <exception cref="ArgumentNullException">Si equipement est null</exception>
         public void Equip(Equipment newEquipment)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
         /// <summary>
         /// Desequipe l'objet en cours au personnage
         /// </summary>
         public void Unequip()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
     }
