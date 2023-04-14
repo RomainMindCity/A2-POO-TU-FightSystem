@@ -1,4 +1,6 @@
 ﻿
+using System.Dynamic;
+
 namespace _2023_GC_A2_Partiel_POO.Level_2
 {
     /// <summary>
@@ -8,7 +10,10 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
     {
         public Equipment(int bonusHealth, int bonusAttack, int bonusDefense, int bonusSpeed)
         {
-            
+            BonusAttack= bonusAttack;
+            BonusDefense= bonusDefense;
+            BonusSpeed= bonusSpeed;
+            BonusHealth= bonusHealth;
         }
 
         public int BonusHealth { get; protected set; }

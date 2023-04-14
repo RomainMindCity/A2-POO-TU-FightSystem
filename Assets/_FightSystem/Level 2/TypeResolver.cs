@@ -25,9 +25,11 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// 1.0 if same type
         /// 1.2 if vulnerable
         /// </returns>
+        
         public static float GetFactor(TYPE attacker, TYPE receiver)
         {
             throw new NotImplementedException();
+
         }
 
     }
