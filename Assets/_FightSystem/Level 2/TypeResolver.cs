@@ -29,6 +29,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         public static float GetFactor(TYPE attacker, TYPE receiver)
         {
             throw new NotImplementedException();
+            
 
         }
 
