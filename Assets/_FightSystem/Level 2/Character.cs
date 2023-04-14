@@ -160,5 +160,26 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
             CurrentEquipment = null;
         }
 
+        public void TakeMaxDamage(int amount)
+        {
+            MaxHealth -= amount;
+            if(CurrentHealth > MaxHealth)
+            {
+                _baseHealth = MaxHealth;
+            }
+        }
+
+        public void Heal(int amount)
+        {
+            if(CurrentHealth + amount > MaxHealth)
+            {
+                _baseHealth = MaxHealth;
+            }
+            else
+            {
+                _baseHealth += amount;
+            }
+        }
+
     }
 }
